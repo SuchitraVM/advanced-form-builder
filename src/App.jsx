@@ -1,5 +1,7 @@
+import BuilderPage from "./pages/BuilderPage";
+
 function App() {
-  return <h1>Advanced Form Builder</h1>;
+  return <BuilderPage />;
 }
 
 export default App;
