@@ -11,7 +11,7 @@ export default function BuilderPage() {
       id : Date.now(),
       type : selectedFieldType,
       label : "", 
-      required : false
+      required : false,
     }
     setFields([...fields, newFields]);
   }
@@ -52,6 +52,7 @@ export default function BuilderPage() {
       <select value={selectedFieldType} onChange={(e)=>setSelectedFieldType(e.target.value)}>
         <option value="text">text</option>
         <option value="checkbox">checkbox</option>
+        
       </select>
       {
         fields.map((field=>(

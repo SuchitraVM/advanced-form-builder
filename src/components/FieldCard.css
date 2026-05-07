@@ -1,0 +1,38 @@
+.fieldCard-container{
+  border: 1px solid #ccc;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  row-gap: 3px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background-color: white;
+  max-width: 400px;
+}
+
+.required-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.delete-btn {
+  width: fit-content;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.fieldCard-container input[type="text"]{
+  padding: 6px;
+  font-size: 14px;
+}
+
+.text-preview{
+  display: flex;
+  flex-direction: column;
+}
+
+
