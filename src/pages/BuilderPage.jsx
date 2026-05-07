@@ -18,7 +18,7 @@ export default function BuilderPage() {
       label : "", 
       required : false,
       options : selectedFieldType === "select" ? 
-        [{ label: "Option 1", value: "option1" },
+        [{ label:"option 1", value: "option1" },
          { label: "Option 2", value: "option2" }] : []
       }
     setFields([...fields, newFields]);
@@ -39,6 +39,14 @@ export default function BuilderPage() {
   //   ))
   //   setFields(updateOptions)
   // }
+  function updateOptionLabel(fieldId,optionIndex,newLabel){
+    
+    const updateOptions =  fields.map((field)=> fieldId === field.id ? {...field,options:field.options.map((option,index)=>
+      (optionIndex === index ? {...option, label :newLabel} : option))} : field)
+
+     setFields(updateOptions)
+      
+  }
 
   function deleteField(id){
     const fieldDelete = fields.filter((filed)=>(
