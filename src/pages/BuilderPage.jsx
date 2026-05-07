@@ -1,4 +1,5 @@
 import { useState } from "react";
+import FieldCard from "../components/FieldCard"
 
 export default function BuilderPage() {
   const [fields, setFields] = useState([]);
@@ -10,6 +11,7 @@ export default function BuilderPage() {
       id : Date.now(),
       type : selectedFieldType,
       label : "", 
+      required : false
     }
     setFields([...fields, newFields]);
   }
@@ -23,6 +25,19 @@ export default function BuilderPage() {
     setFields(updateFields);
   }
 
+  function deleteField(id){
+    const fieldDelete = fields.filter((filed)=>(
+      filed.id !== id 
+    ))
+    setFields(fieldDelete)
+  }
+
+  function updateRequired(id,checkedValue){
+    const required = fields.map((field)=>(
+      field.id === id ? {...field, required:checkedValue} : field
+    ))
+    setFields(required)
+  }
   //  function updateFieldType(id, newType){
   //   const updateType = fields.map((field)=>(
   //     filed.id===id ? {...field, type:newType} : field
@@ -40,23 +55,18 @@ export default function BuilderPage() {
       </select>
       {
         fields.map((field=>(
-          field.type === "text" ?
-          <div key={field.id}>
-            <input 
-            type={field.type}
-            value={field.label}
-            onChange={(e)=>updateFieldLabel(field.id,e.target.value)}
+          /* settings section*/
+          <FieldCard 
+            key={field.id}
+            id={field.id}
+            required={field.required} 
+            type={field.type} 
+            label={field.label}
+            updateFieldLabel={updateFieldLabel}
+            updateRequired={updateRequired}
+            deleteField = {deleteField}
             />
-            <input type="text" placeholder="User input here"/>
-          </div> :
-          <div key={field.id}>
-            <label>
-            <input 
-            type={field.type}
-            />{field.label}
-            </label>
-          </div>
-      
+            
         )))
       }
 
