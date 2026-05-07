@@ -27,11 +27,22 @@ export default function FieldCard(props){
               placeholder="user input here"
               required={props.required} />
           </label>
+            : ( 
+            props.type === "select"  ?
+            <>
+            <label>{props.label}{props.required && "*"}</label>
+            <select className="select-preview">
+              {props.options.map((option)=>(
+                <option key={option.value} value={option.value}>{option.label}</option>
+              ))}
+            </select>
+            </>
             :
           <label className="checkbox-preview">
             <input type="checkbox" required={props.required} />
             {props.label}{props.required && "*"}
           </label>
+          )
           }
           <button className="delete-btn" onClick={()=>props.deleteField(props.id)}>Delete</button>
     </div>

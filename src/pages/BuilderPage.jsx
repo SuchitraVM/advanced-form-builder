@@ -12,7 +12,10 @@ export default function BuilderPage() {
       type : selectedFieldType,
       label : "", 
       required : false,
-    }
+      options : selectedFieldType === "select" ? 
+        [{ label: "Option 1", value: "option1" },
+         { label: "Option 2", value: "option2" }] : []
+      }
     setFields([...fields, newFields]);
   }
   
@@ -24,6 +27,13 @@ export default function BuilderPage() {
     ))
     setFields(updateFields);
   }
+
+  // function updateOptions(id, options){
+  //   const option = fields.map((field)=>(
+  //     field.id === id ? (field.type === "select" ? {...field, /*options  */}: field) : field
+  //   ))
+  //   setFields(updateOptions)
+  // }
 
   function deleteField(id){
     const fieldDelete = fields.filter((filed)=>(
@@ -52,7 +62,7 @@ export default function BuilderPage() {
       <select value={selectedFieldType} onChange={(e)=>setSelectedFieldType(e.target.value)}>
         <option value="text">text</option>
         <option value="checkbox">checkbox</option>
-        
+        <option value="select">select</option>
       </select>
       {
         fields.map((field=>(
@@ -63,6 +73,7 @@ export default function BuilderPage() {
             required={field.required} 
             type={field.type} 
             label={field.label}
+            options={field.options}
             updateFieldLabel={updateFieldLabel}
             updateRequired={updateRequired}
             deleteField = {deleteField}
