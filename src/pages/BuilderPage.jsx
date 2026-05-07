@@ -33,12 +33,6 @@ export default function BuilderPage() {
     setFields(updateFields);
   }
 
-  // function updateOptions(id, options){
-  //   const option = fields.map((field)=>(
-  //     field.id === id ? (field.type === "select" ? {...field, /*options  */}: field) : field
-  //   ))
-  //   setFields(updateOptions)
-  // }
   function updateOptionLabel(fieldId,optionIndex,newLabel){
     
     const updateOptions =  fields.map((field)=> fieldId === field.id ? {...field,options:field.options.map((option,index)=>
@@ -61,12 +55,24 @@ export default function BuilderPage() {
     ))
     setFields(required)
   }
-  //  function updateFieldType(id, newType){
-  //   const updateType = fields.map((field)=>(
-  //     filed.id===id ? {...field, type:newType} : field
-  //   ))
-  //   setSelectedFieldType(newType)
-  // }
+  
+  function addOption(fieldId){
+    const newOption = {label : "",value : Date.now()}
+    const add = fields.map((field)=>(
+      field.id === fieldId ? {...field,options: [...field.options, newOption]} : field
+    ))
+    setFields(add)
+  }
+
+  function deleteOption(fieldId,optionId){
+    const optionDelete = fields.map((field)=>(
+      fieldId === field.id ?
+      {...field, 
+       options : field.options.filter((option,index)=>(optionId !== index)) }:
+        field
+    ))
+    setFields(optionDelete)
+  }
 
   return (
     <div>

@@ -14,13 +14,14 @@ export default function FieldCard(props){
             <div className="required-now">
             <label >Required
             <input type="checkbox" onChange={e =>props.updateRequired(props.id,e.target.checked)}/></label>
-
             {
             props.type === "select" && 
               props.options.map((option,index)=>(
-                <input key={index} value={option.label} onChange={(e)=>props.updateOptionLabel(props.id,index,e.target.value)} type="text" placeholder="add option name"/>
+                <input key={index} value={option.label} onChange={props.updateOptionLabel(props.id,index,e.target.value)} type="text" placeholder="add option name"/>
+                
               ))
             }
+            <button onClick={(e)=>props.addOption(props.id)}>Add Option</button>
             </div>
       
 
