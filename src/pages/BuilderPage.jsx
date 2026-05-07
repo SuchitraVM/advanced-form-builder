@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import FieldCard from "../components/FieldCard"
 
 export default function BuilderPage() {
-  const [fields, setFields] = useState([]);
+  const [fields, setFields] = useState(()=>JSON.parse(localStorage.getItem('fields')) || []);
   const [selectedFieldType, setSelectedFieldType] = useState("text")
   
+  useEffect(()=>{
+    /*storing and converting to json*/
+    localStorage.setItem('fields',JSON.stringify(fields))
+
+  },[fields])
 
   function addFields(){
     const newFields = {
