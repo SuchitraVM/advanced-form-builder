@@ -1,5 +1,6 @@
 import { useState,useEffect } from "react";
 import FieldCard from "../components/FieldCard"
+import "./BuilderPage.css"
 
 export default function BuilderPage() {
   const [fields, setFields] = useState(()=>JSON.parse(localStorage.getItem('fields')) || []);
@@ -66,23 +67,25 @@ export default function BuilderPage() {
 
   function deleteOption(fieldId,optionId){
     const optionDelete = fields.map((field)=>(
-      fieldId === field.id ?
+      fieldId === field.id ? (field.options.length > 1 ?
       {...field, 
-       options : field.options.filter((option,index)=>(optionId !== index)) }:
-        field
+       options :  field.options.filter((option,index)=>(optionId !== index)) }:
+        field ) : field
     ))
     setFields(optionDelete)
   }
 
   return (
-    <div>
+    <div className="builder-container">
       <h2>Form Builder</h2>
+      <div className="controls">
       <button onClick={addFields}>Add Field</button>
       <select value={selectedFieldType} onChange={(e)=>setSelectedFieldType(e.target.value)}>
         <option value="text">text</option>
         <option value="checkbox">checkbox</option>
         <option value="select">select</option>
       </select>
+      </div>
       {
         fields.map((field=>(
           /* settings section*/
@@ -96,6 +99,9 @@ export default function BuilderPage() {
             updateFieldLabel={updateFieldLabel}
             updateRequired={updateRequired}
             deleteField = {deleteField}
+            addOption={addOption}
+            deleteOption={deleteOption}
+            updateOptionLabel={updateOptionLabel}
             />
             
         )))
