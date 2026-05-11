@@ -1,4 +1,5 @@
 .fieldCard-container{
+  flex-wrap: wrap;
   border: 1px solid #ccc;
   padding: 16px;
   display: flex;
@@ -60,6 +61,8 @@ button:hover{
 }
 
 .fieldCard-container input[type="text"]{
+  width: 100%;
+  box-sizing: border-box;
   padding: 6px;
   font-size: 14px;
 }
