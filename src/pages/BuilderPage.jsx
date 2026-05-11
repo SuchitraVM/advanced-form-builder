@@ -105,6 +105,8 @@ export default function BuilderPage() {
         <option value="text">text</option>
         <option value="checkbox">checkbox</option>
         <option value="select">select</option>
+        <option value="email">email</option>
+        <option value="password">password</option>
       </select>
       {fields.length > 0 && <button className="export-btn" onClick={handleExport}>Export JSON</button>}
       </div>

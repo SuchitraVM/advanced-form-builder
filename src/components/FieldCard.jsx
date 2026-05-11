@@ -1,83 +1,219 @@
-/*Responsibel for handling one field UI,settings,preview,dleet button */
+
+/* Responsible for handling one field UI, settings, preview, delete button */
+
+import { useState } from "react"
 import "./FieldCard.css"
 
-export default function FieldCard(props){
+export default function FieldCard(props) {
 
-  return (
-    <div className="fieldCard-container">
-      <label className="field-label">Field Label</label>
-            <input 
-            className="fieldLabel"
-            value={props.label}
-            onChange={(e)=>props.updateFieldLabel(props.id,e.target.value)}
-            />
-      
-          <div className="required-now">
+  const [password, setPassword] = useState("")
+   const [ confirmPassword , setConfirmPassword] = useState("")
+  const [ showPassword , setShowPassword ] = useState(false)
+   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+
+  function toggleShowPassword(){
+    setShowPassword(!showPassword)
+  }
+
+  function toggleShowConfirmPassword(){
+    setShowConfirmPassword(!showConfirmPassword)
+  }
+
+
+  function renderPreview() {
+
+    if (
+      props.type === "text" ||
+      props.type === "email"
+    ) {
+      return (
+        <div className="text-preview">
           <label>
-            Required</label>
-            <input 
-              type="checkbox" 
-              onChange={e => props.updateRequired(props.id, e.target.checked)} 
-            />
+            {props.label} {props.required && "*"}
+          </label>
+
+          <input
+            type={props.type}
+            placeholder="user input here"
+            required={props.required}
+          />
+        </div>
+      )
+    }
+
+    else if (props.type === "password") {
+      return (
+        <div className="password-preview-container">
+
+          <label>
+            {props.label} {props.required && "*"}
+          </label>
+
+          <div className="setPassword-inputs">
+          <input
+            type= {showPassword === true ? "text" : "password"}
+            placeholder="Set Password"
+            required={props.required}
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+          />
+          <button type="button" onClick={toggleShowPassword}>👁</button>
           </div>
 
 
-          {props.type === "select" && (
-            <>
-              {/* Wrap the map function in curly braces */}
-              {props.options.map((option, index) => (
-                <div key={index} className="option-settings">
-                  <input
-                    value={option.label}
-                    onChange={(e) => props.updateOptionLabel(props.id, index, e.target.value)}
-                    type="text"
-                    placeholder="add option name"
-                  />
-                  <button className="optionDelete-btn" onClick={() => props.deleteOption(props.id, index)}>
-                    Delete
-                  </button>
-                  </div>
-                ))}
-                <button className="addOption-btn" onClick={() => props.addOption(props.id)}>
-                  Add Option
-                </button>
-                  </>
-                )}
-
-      <h4>Preview</h4>
+          <div className="confirmPassword-inputs">
+          <input
+            type={showConfirmPassword === true ? "text" : "password"}
+            placeholder="Confirm Password"
+            required={props.required}
+            value={confirmPassword}
+            onChange={e => setConfirmPassword(e.target.value)}
+          />
+          <button type="button" onClick={toggleShowConfirmPassword}>👁</button>
+          </div>
           {
-            props.type ==="text" ? 
-            <div className="text-preview">
-            <label>{props.label} {props.required && "*"}</label>
-              <input
-                type="text"
-                placeholder="user input here"
-                required={props.required} />
-            </div>
-            : ( 
-            props.type === "select"  ?
-            <div className="select-preview-container">
-            <label>{props.label} {props.required && "*"}</label>
-            <select className="select-preview">
-              <option>Select an option</option>
-              {props.options.map((option,index)=>(
-                <option key={index} value={option.label}>{option.label}</option>
-                
-              ))}
-            </select>
-            </div>
-            :
-          <label className="checkbox-preview">
-            <input type="checkbox" required={props.required} />
+              confirmPassword &&
+              password !== confirmPassword && (
+                <p className="password-error">
+                  Passwords do not match
+                </p>
+              )
+            }
+
+        </div>
+      )
+    }
+
+    else if (props.type === "select") {
+      return (
+        <div className="select-preview-container">
+
+          <label>
             {props.label} {props.required && "*"}
           </label>
-          )
+
+          <select className="select-preview">
+
+            <option>Select an option</option>
+
+            {props.options.map((option, index) => (
+              <option key={index} value={option.label}>
+                {option.label}
+              </option>
+            ))}
+
+          </select>
+
+        </div>
+      )
+    }
+
+    else if (props.type === "checkbox") {
+      return (
+        <label className="checkbox-preview">
+
+          <input
+            type="checkbox"
+            required={props.required}
+          />
+
+          {props.label} {props.required && "*"}
+
+        </label>
+      )
+    }
+
+    return null
+  }
+
+  return (
+    <div className="fieldCard-container">
+
+      <label className="field-label">
+        Field Label
+      </label>
+
+      <input
+        className="fieldLabel"
+        value={props.label}
+        onChange={(e) =>
+          props.updateFieldLabel(props.id, e.target.value)
+        }
+      />
+
+      <div className="required-now">
+
+        <label>
+          Required
+        </label>
+
+        <input
+          type="checkbox"
+          onChange={(e) =>
+            props.updateRequired(props.id, e.target.checked)
           }
-          <button className="fieldDelete-btn" onClick={()=>props.deleteField(props.id)}>Delete</button>
+        />
+
+      </div>
+
+      {props.type === "select" && (
+        <>
+
+          {props.options.map((option, index) => (
+
+            <div key={index} className="option-settings">
+
+              <input
+                value={option.label}
+                onChange={(e) =>
+                  props.updateOptionLabel(
+                    props.id,
+                    index,
+                    e.target.value
+                  )
+                }
+                type="text"
+                placeholder="add option name"
+              />
+
+              <button
+                className="optionDelete-btn"
+                onClick={() =>
+                  props.deleteOption(props.id, index)
+                }
+              >
+                Delete
+              </button>
+
+            </div>
+          ))}
+
+          <button
+            className="addOption-btn"
+            onClick={() => props.addOption(props.id)}
+          >
+            Add Option
+          </button>
+
+        </>
+      )}
+
+      <h4>Preview</h4>
+
+      <div>
+        {renderPreview()}
+      </div>
+
+      <button
+        className="fieldDelete-btn"
+        onClick={() => props.deleteField(props.id)}
+      >
+        Delete Field
+      </button>
+
     </div>
   )
 }
-
 
 
 
