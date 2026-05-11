@@ -75,6 +75,27 @@ export default function BuilderPage() {
     setFields(optionDelete)
   }
 
+  function handleExport(){
+
+    const jsonData = JSON.stringify(fields,null,2)
+
+    const blob = new Blob([jsonData,{
+      type : "application/json"
+    }])
+
+    const url = URL.createObjectURL(blob)
+
+    const link = document.createElement("a")
+
+    link.href = url
+    link.download = "form-schema.json"
+
+    link.click()
+
+    URL.revokeObjectURL(url)
+
+  }
+
   return (
     <div className="builder-container">
       <h2>Form Builder</h2>
@@ -85,6 +106,7 @@ export default function BuilderPage() {
         <option value="checkbox">checkbox</option>
         <option value="select">select</option>
       </select>
+      {fields.length > 0 && <button className="export-btn" onClick={handleExport}>Export JSON</button>}
       </div>
       
       {
