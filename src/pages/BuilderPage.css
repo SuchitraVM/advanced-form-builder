@@ -4,11 +4,43 @@
   padding : 8px 10px;
 }
 
+
+
+.msg-container{
+  background-color: #ded8d8; /* Dark gray/black background */
+  border: 2px dashed #444;    /* The dashed border */
+  border-radius: 14px;       /* Rounded corners */
+  padding: 30px 40px;             /* Space inside the box */
+  display: flex;
+  justify-content: center;   /* Horizontal center */
+  align-items: center;       /* Vertical center */
+  text-align: center;        /* Center the text lines */
+  min-height: 150px;         /* Give it some height */
+  margin: 30px 0;
+
+}
+
+.render-message{
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.render-message span{
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
 .controls {
   display: flex;
   flex-direction: row; 
   gap: 8px;             
   margin-bottom: 20px;  
+}
+.controls button{
+  transition: 0.2s
 }
 
 .controls button{
@@ -21,10 +53,11 @@
   font-size: medium;
   font-weight: 300;
 }
+
 button:hover{
   background-color: #e2e2e2; /* Slightly darker than the default light grey */
   border-color: #adadad;
-  transition: 0.2s
+  
 }
 
 .controls select{

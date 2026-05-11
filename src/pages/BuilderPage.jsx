@@ -86,7 +86,14 @@ export default function BuilderPage() {
         <option value="select">select</option>
       </select>
       </div>
+      
       {
+        fields.length === 0 ? 
+        <div className="msg-container">
+        <p className="render-message">No fields added yet.<br />
+          <span>Click "Add Field" to start building your form.</span> 
+        </p>
+        </div> :
         fields.map((field=>(
           /* settings section*/
           <FieldCard 
