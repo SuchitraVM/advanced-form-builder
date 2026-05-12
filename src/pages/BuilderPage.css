@@ -80,6 +80,46 @@ button.export-btn{
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+button.previewMode-btn{
+  color: rgb(36, 35, 35);
+  font-size: 13px;
+
+  white-space: nowrap;
+  display: inline-block;
+  min-width: fit-content;
+
+  margin-left: 6px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+button.submit-btn{
+  background-color: #2453ec;
+  color: rgb(233, 229, 229);
+  font-size: 15px;
+
+  white-space: nowrap;
+  display: inline-block;
+  min-width: fit-content;
+
+  margin-left: 6px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+}
+button.submit-btn:hover{
+  background-color: #456ced;
+  border-color: #474444;
+}
+
 button:hover{
   background-color: #e2e2e2; /* Slightly darker than the default light grey */
   border-color: #adadad;

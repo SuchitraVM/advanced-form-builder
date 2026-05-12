@@ -5,6 +5,7 @@ import "./BuilderPage.css"
 export default function BuilderPage() {
   const [fields, setFields] = useState(()=>JSON.parse(localStorage.getItem('fields')) || []);
   const [selectedFieldType, setSelectedFieldType] = useState("text")
+  const [isPreviewMode, setIsPreviewMode] = useState(false)
   
   useEffect(()=>{
     /*storing and converting to json*/
@@ -93,11 +94,54 @@ export default function BuilderPage() {
     link.click()
 
     URL.revokeObjectURL(url)
-
   }
+
+
+  function moveFieldUp(fieldId){
+    const updatedFields = [...fields]
+    const index =  fields.findIndex( (field)=>(
+      fieldId === field.id
+    ))
+    if(index <= 0){
+      return
+    }
+
+    [updatedFields[index], updatedFields[index - 1]] = [updatedFields[index - 1], updatedFields[index]]
+    
+    setFields(updatedFields)
+    console.log("up")
+  }
+
+  function moveFieldDown(fieldId){
+    const updatedFields = [...fields]
+    
+    const index =  fields.findIndex( (field)=>(
+      fieldId === field.id
+    ))
+    if(index === fields.length-1 || index === -1){
+      return
+    }
+
+    [updatedFields[index], updatedFields[index + 1]] = [updatedFields[index + 1], updatedFields[index]]
+    
+    setFields(updatedFields)
+    console.log("down")
+  }
+
+
+
+
+
+
+
+
+
 
   return (
     <div className="builder-container">
+      {
+      !isPreviewMode && (
+      <div>
       <h2>Form Builder</h2>
       <div className="controls">
       <button onClick={addFields}>Add Field</button>
@@ -108,9 +152,14 @@ export default function BuilderPage() {
         <option value="email">email</option>
         <option value="password">password</option>
       </select>
+      
       {fields.length > 0 && <button className="export-btn" onClick={handleExport}>Export JSON</button>}
       </div>
-      
+      </div>
+      )
+      }
+
+      {fields.length !== 0 && <button className="previewMode-btn" onClick={()=>setIsPreviewMode(!isPreviewMode)}>{(isPreviewMode) ?"Back to Builder " : "Preview Form"}</button>}
       {
         fields.length === 0 ? 
         <div className="msg-container">
@@ -133,10 +182,26 @@ export default function BuilderPage() {
             addOption={addOption}
             deleteOption={deleteOption}
             updateOptionLabel={updateOptionLabel}
+            moveFieldUp={moveFieldUp}
+            moveFieldDown={moveFieldDown}
+            isPreviewMode={isPreviewMode}
             />
             
         )))
       }
+      {isPreviewMode && 
+      <button
+        type="button"
+        className="submit-btn" 
+        onClick={(e) => {
+          e.preventDefault(); // Prevents the page from reloading
+          alert("Form submitted successfully");
+        }}
+      >
+        Submit
+      </button>
+        }
+
 
    </div>
   )

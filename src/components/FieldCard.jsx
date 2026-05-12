@@ -141,22 +141,23 @@ export default function FieldCard(props) {
   }
 
   return (
+    
     <div className="fieldCard-container">
-
-      <label className="field-label">
+      {
+      !props.isPreviewMode && 
+      (
+      <div className="field-label">
+      <label>
         Field Label
       </label>
-
       <input
         className="fieldLabel"
         value={props.label}
         onChange={(e) =>
           props.updateFieldLabel(props.id, e.target.value)
-        }
-      />
+        }/>
 
       <div className="required-now">
-
         <label>
           Required
         </label>
@@ -167,7 +168,6 @@ export default function FieldCard(props) {
             props.updateRequired(props.id, e.target.checked)
           }
         />
-
       </div>
 
       {props.type === "select" && (
@@ -211,20 +211,29 @@ export default function FieldCard(props) {
 
         </>
       )}
-
+      
       <h4>Preview</h4>
+      </div>
+      )
+    }
 
       <div>
         {renderPreview()}
       </div>
 
+      {!props.isPreviewMode && 
+      <div className="preview-btns">
+      <button className="up-btn" onClick={()=>props.moveFieldUp(props.id)}>↑</button>
+      <button className="down-btn" onClick={()=>props.moveFieldDown(props.id)}>↓</button>
       <button
         className="fieldDelete-btn"
         onClick={() => props.deleteField(props.id)}
       >
         Delete Field
       </button>
-
+      
+      </div>
+      }
     </div>
   )
 }
