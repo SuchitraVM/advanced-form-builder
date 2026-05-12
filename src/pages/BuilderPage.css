@@ -1,16 +1,114 @@
 *{
+    margin:0;
+   padding:0;
    box-sizing:border-box;
-  
 }
+
+
 
 .builder-container{
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  max-width: 800px;
-  width: 100%;
-  margin: auto;
-  padding : 8px 10px;
+}
+
+
+/*HEADER STYLING*/
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  height: 100px;
+  border: 1px solid #949191;
+  background-color: #970747;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.header-actions{
+  display: flex;
+  gap: 4px;
+}
+
+h2{
+  margin: 0;
+  font-size: 25px;
+  color: white;
+}
+
+button{
+  transition: 0.2s;
+}
+
+.header button:hover{
+  background-color: #e2e2e2; 
+  border-color: #adadad;
+} 
+
+button.export-btn{
+  background-color: white; 
+  color: #970747;
+  font-size: 13px;
+
+  white-space: nowrap;
+  display: inline-block;
+  min-width: fit-content;
+
+  margin-left: 6px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+button.import-btn{
+  background-color: white; 
+  color: #970747;
+  font-size: 13px;
+
+  white-space: nowrap;
+  display: inline-block;
+  min-width: fit-content;
+
+  margin-left: 6px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); */
+}
+
+button.clearForm{
+  background-color: white; 
+  color: #970747;
+  font-size: 13px;
+
+  white-space: nowrap;
+  display: inline-block;
+  min-width: fit-content;
+
+  margin-left: 6px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+}
+
+
+/*MAIN STYLING*/
+
+.main{
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
 }
 
 
@@ -52,56 +150,25 @@
   margin-bottom: 20px;  
 }
 
-button{
-  transition: 0.2s
-}
-
 .controls button{
-  padding: 8px 14px;
-  border: 1px solid #1a1919;
+  color: white;
+  background-color: #aa1659;
+  padding: 8px 16px;
+  border: none;
   border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
   font-weight: 400;
 }
 
-button.export-btn{
-  background-color: #7a95ed; /* A clean, modern blue */
-  color: rgb(36, 35, 35);
-  font-size: 13px;
-
-  white-space: nowrap;
-  display: inline-block;
-  min-width: fit-content;
-
-  margin-left: 6px;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-button.import-btn{
-  background-color: #7a95ed; /* A clean, modern blue */
-  color: rgb(36, 35, 35);
-  font-size: 13px;
-
-  white-space: nowrap;
-  display: inline-block;
-  min-width: fit-content;
-
-  margin-left: 6px;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+.controls button:hover{
+  background-color: #c12269;
+  border-color: #9a9393;
 }
 
 button.previewMode-btn{
-  color: rgb(36, 35, 35);
+  color: white;
+  background-color: #aa1659;
   font-size: 13px;
   width: 180px;
   display: flex;
@@ -114,7 +181,8 @@ button.previewMode-btn{
   min-width: fit-content;
 
   margin: auto;
-  padding: 8px 16px;
+  padding: 9px 16px;
+  border: none;
   border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
@@ -146,10 +214,7 @@ button.submit-btn:hover{
   border-color: #474444;
 }
 
-button:hover{
-  background-color: #e2e2e2; /* Slightly darker than the default light grey */
-  border-color: #adadad;
-}
+
 
 .submit-success{
   display: block;

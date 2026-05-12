@@ -158,6 +158,8 @@ export default function FieldCard(props) {
     return null
   }
 
+
+  /*displayed on screen */
   return (
     
     <div className="fieldCard-container">

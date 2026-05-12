@@ -262,86 +262,93 @@ export default function BuilderPage() {
 
 
   return (
-    <div className="builder-container">
+    <>
+    <header className="header">
+      <h2>Form Builder</h2>
       {
       !isPreviewMode && (
-      <div>
-      <h2>Form Builder</h2>
-      <div className="controls">
-      <button onClick={addFields}>Add Field</button>
-      <select value={selectedFieldType} onChange={(e)=>setSelectedFieldType(e.target.value)}>
-        <option value="text">text</option>
-        <option value="checkbox">checkbox</option>
-        <option value="select">select</option>
-        <option value="email">email</option>
-        <option value="password">password</option>
-        <option value="textarea">textarea</option>
-        <option value="number">number</option>
-      </select>
-      <select onChange={(e)=> handleTemplateChange(e.target.value)}>
-        <option value="">Choose a template</option>
-        <option value="contact">Contact Form</option>
-        <option value="signup">Signup Form</option>
-        <option value="feedback">Feedback Form</option>
-      </select>
-      
+      <div className="header-actions">
       {fields.length > 0 && <button className="export-btn" onClick={handleExport}>Export JSON</button>}
       <button className="import-btn" onClick={handleImport}>Import JSON</button>
-      <button onClick={clearForm}>Clear Form</button>
-      </div>
+      <button className="clearForm"onClick={clearForm}>Clear Form</button>
       </div>
       )
       }
+    </header>
 
-      {fields.length !== 0 && <button className="previewMode-btn" onClick={()=>setIsPreviewMode(!isPreviewMode)}>{(isPreviewMode) ?"Back to Builder " : "Preview Form"}</button>}
+    <div className="builder-container">
+      <div className="controls">
+        <button onClick={addFields} className="addFields-btn">Add Field</button>
+        <select value={selectedFieldType} onChange={(e)=>setSelectedFieldType(e.target.value)}>
+          <option value="text">text</option>
+          <option value="checkbox">checkbox</option>
+          <option value="select">select</option>
+          <option value="email">email</option>
+          <option value="password">password</option>
+          <option value="textarea">textarea</option>
+          <option value="number">number</option>
+        </select>
+        <select onChange={(e)=> handleTemplateChange(e.target.value)}>
+          <option value="">Choose a template</option>
+          <option value="contact">Contact Form</option>
+          <option value="signup">Signup Form</option>
+          <option value="feedback">Feedback Form</option>
+        </select>
+      </div>  
+      
+    {fields.length !== 0 && <button className="previewMode-btn" onClick={()=>setIsPreviewMode(!isPreviewMode)}>{(isPreviewMode) ?"Back to Builder " : "Preview Form"}</button>}
+    <main className="main">
       {
-        fields.length === 0 ? 
-        <div className="msg-container">
-        <p className="render-message">No fields added yet.<br />
-          <span>Click "Add Field" to start building your form.</span> 
-        </p>
-        </div> :
+        fields.length === 0 
+        ? 
+          <div className="msg-container">
+          <p className="render-message">No fields added yet.<br />
+            <span>Click "Add Field" to start building your form.</span> 
+          </p>
+          </div>  
+        :
         <form onSubmit={handleSubmit}>
           {
-        fields.map((field=>(
-          /* settings section*/
-          <FieldCard 
-            key={field.id}
-            id={field.id}
-            required={field.required} 
-            type={field.type} 
-            label={field.label}
-            options={field.options}
-            updateFieldLabel={updateFieldLabel}
-            updateRequired={updateRequired}
-            deleteField = {deleteField}
-            addOption={addOption}
-            deleteOption={deleteOption}
-            updateOptionLabel={updateOptionLabel}
-            moveFieldUp={moveFieldUp}
-            moveFieldDown={moveFieldDown}
-            isPreviewMode={isPreviewMode}
-            />
-            
-        )))
-      }
-      {isPreviewMode && 
-      <div>
-      <button
-        type="submit"
-        className="submit-btn" 
-      >
-        Submit
-      </button>
+            fields.map((field=>(
+              /* settings section*/
+              <FieldCard 
+                key={field.id}
+                id={field.id}
+                required={field.required} 
+                type={field.type} 
+                label={field.label}
+                options={field.options}
+                updateFieldLabel={updateFieldLabel}
+                updateRequired={updateRequired}
+                deleteField = {deleteField}
+                addOption={addOption}
+                deleteOption={deleteOption}
+                updateOptionLabel={updateOptionLabel}
+                moveFieldUp={moveFieldUp}
+                moveFieldDown={moveFieldDown}
+                isPreviewMode={isPreviewMode}
+                />
+                
+            )))
+          }
+          {
+          isPreviewMode && 
+            <div>
+              <button
+                type="submit"
+                className="submit-btn" 
+              >
+                Submit
+              </button>
 
-      {isSubmitted && <p className="submit-success">✅ Form submitted successfully</p>}
-        </div>
-      }
-      
-      
+              {isSubmitted && <p className="submit-success">✅ Form submitted successfully</p>}
+            </div>
+          }
       </form> 
       }
+    </main>
 
-   </div>
+  </div>
+  </>
   )
 }
