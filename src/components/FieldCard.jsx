@@ -20,6 +20,23 @@ export default function FieldCard(props) {
   }
 
 
+  function passwordValidation(){
+    if(confirmPassword && password.length < 8){
+      return (
+      <p className="password-length">Password must be at least 8 characters</p>
+    )
+    }
+    else if(confirmPassword && password !== confirmPassword){
+      return (
+      <p className="password-error">Passwords do not match</p>
+        )
+    }else if (confirmPassword && password === confirmPassword && password.length >= 8){
+     return (<p className="password-success"> Passwords match</p>)
+    }
+    return null
+  }
+
+
   function renderPreview() {
 
     if (
@@ -71,14 +88,11 @@ export default function FieldCard(props) {
           />
           <button type="button" onClick={toggleShowConfirmPassword}>👁</button>
           </div>
+          
           {
-              confirmPassword &&
-              password !== confirmPassword && (
-                <p className="password-error">
-                  Passwords do not match
-                </p>
-              )
-            }
+              passwordValidation()
+              
+          }
 
         </div>
       )
