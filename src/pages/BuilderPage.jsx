@@ -25,6 +25,96 @@ export default function BuilderPage() {
       }
     setFields([...fields, newFields]);
   }
+
+  const contactFormTemplate = [
+
+  {
+    id: Date.now() + 1,
+    type: "text",
+    label: "Full Name",
+    required: true,
+    options: []
+  },
+
+  {
+    id: Date.now() + 2,
+    type: "email",
+    label: "Email Address",
+    required: true,
+    options: []
+  },
+
+  {
+    id: Date.now() + 3,
+    type: "text",
+    label: "Message",
+    required: true,
+    options: []
+  }
+]
+
+  const signupFormTemplate = [
+    {
+    id: Date.now() + 1,
+    type: "text",
+    label: "UserName",
+    required: true,
+    options: []
+  },
+
+  {
+    id: Date.now() + 2,
+    type: "email",
+    label: "Email Address",
+    required: true,
+    options: []
+  },
+
+  {
+    id: Date.now() + 3,
+    type: "password",
+    label: "Password",
+    required: true,
+    options: []
+  }
+  ]
+
+  const feedbackFormTemplate = [{
+    id: Date.now() + 1,
+    type: "text",
+    label: "Full Name",
+    required: true,
+    options: []
+  },
+
+  {
+    id: Date.now() + 2,
+    type: "textarea",
+    label: "Feedback",
+    required: true,
+    options: []
+  },
+
+  {
+    id: Date.now() + 3,
+    type: "number",
+    label: "Rate out of 10",
+    required: true,
+    options: []
+  }]
+
+
+  function handleTemplateChange(templateName){
+    if(templateName === "contact"){
+      return setFields(contactFormTemplate)
+    }else if(templateName === "signup"){
+      return setFields(signupFormTemplate)
+    }else if(templateName === "feedback"){
+      return setFields(feedbackFormTemplate)
+    }else{
+      return
+    }
+  }
   
  
 
@@ -169,6 +259,14 @@ export default function BuilderPage() {
         <option value="select">select</option>
         <option value="email">email</option>
         <option value="password">password</option>
+        <option value="textarea">textarea</option>
+        <option value="number">number</option>
+      </select>
+      <select onChange={(e)=> handleTemplateChange(e.target.value)}>
+        <option value="">Choose a template</option>
+        <option value="contact">Contact Form</option>
+        <option value="signup">Signup Form</option>
+        <option value="feedback">Feedback Form</option>
       </select>
       
       {fields.length > 0 && <button className="export-btn" onClick={handleExport}>Export JSON</button>}

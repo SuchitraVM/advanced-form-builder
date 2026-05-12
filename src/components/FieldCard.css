@@ -12,7 +12,7 @@
   margin-bottom: 20px;
   width: 100%;
   max-width: 400px;
-  
+
   border-radius: 8px; 
   background-color: white;
   box-shadow:  0 2px 8px #ccc;
@@ -116,7 +116,7 @@ button:hover{
 }
 
 /*TEXT PREVIEW*/
-.fieldCard-container input[type="text"],input[type="email"]{
+.fieldCard-container input[type="text"],input[type="email"],input[type="number"]{
   width: 100%;
   box-sizing: border-box;
   padding: 8px;
@@ -132,6 +132,13 @@ button:hover{
   gap: 9px;
 }
 
+/*TEXTAREA PREVIEW*/
+.textarea-preview{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+  gap: 9px;
+}
 
 
 /*PASSWORD PREVIEW*/

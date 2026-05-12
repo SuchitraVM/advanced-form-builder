@@ -41,7 +41,8 @@ export default function FieldCard(props) {
 
     if (
       props.type === "text" ||
-      props.type === "email"
+      props.type === "email" || 
+      props.type === "number"
     ) {
       return (
         <div className="text-preview">
@@ -54,6 +55,23 @@ export default function FieldCard(props) {
             placeholder="user input here"
             required={props.required}
           />
+        </div>
+      )
+    }
+
+    else if(props.type === "textarea"){
+      return (
+        <div className="textarea-preview">
+          <label>
+            {props.label} {props.required && "*"}
+          </label>
+          <textarea 
+            rows={5}
+            cols={40}
+            placeholder="Enter your text here"
+            required={props.required}
+          />
+
         </div>
       )
     }
