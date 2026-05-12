@@ -96,6 +96,24 @@ export default function BuilderPage() {
     URL.revokeObjectURL(url)
   }
 
+  function handleImport(){
+    try{
+    let jsonString = prompt("enter your JSON here")
+    if(!jsonString) return;
+
+    const data = JSON.parse(jsonString);
+      if(!Array.isArray(data)){
+        alert("Invalid JSON format. Please check your syntax")
+        return
+      }
+    setFields(data)}
+    catch(e){
+      alert("Invalid JSON format. Please check your syntax")
+      console.error("Import Error:",e)
+    }
+
+  }
+
 
   function moveFieldUp(fieldId){
     const updatedFields = [...fields]
@@ -114,7 +132,7 @@ export default function BuilderPage() {
 
   function moveFieldDown(fieldId){
     const updatedFields = [...fields]
-    
+
     const index =  fields.findIndex( (field)=>(
       fieldId === field.id
     ))
@@ -154,6 +172,7 @@ export default function BuilderPage() {
       </select>
       
       {fields.length > 0 && <button className="export-btn" onClick={handleExport}>Export JSON</button>}
+      {fields.length >0 && <button className="import-btn" onClick={handleImport}>Import JSON</button>}
       </div>
       </div>
       )

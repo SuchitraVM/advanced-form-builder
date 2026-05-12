@@ -4,23 +4,27 @@
   padding: 16px;
   display: flex;
   flex-direction: column;
-  justify-content: left;
+  justify-content: center;
   row-gap: 3px;
+  
+  margin: auto;
   margin-top: 15px;
   margin-bottom: 20px;
-  border-radius: 8px;
-  background-color: white;
+  width: 100%;
   max-width: 400px;
+  
+  border-radius: 8px; 
+  background-color: white;
   box-shadow:  0 2px 8px #ccc;
 }
 
 .field-label{
+  width: 100%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   row-gap: 3px;
   margin-top: 15px;
-  margin-bottom: 20px;
   font-size: 18px;
   font-weight: 200;
   margin-bottom: 8px;
@@ -64,7 +68,7 @@
 }
 
 .optionDelete-btn{
-   width: 80px;
+  width: 80px;
   padding: 6px 10px;
   border: 1px solid #1a1919;
   border-radius: 4px;
