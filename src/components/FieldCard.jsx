@@ -236,7 +236,9 @@ export default function FieldCard(props) {
     }
 
       <div>
+      
         {renderPreview()}
+
       </div>
 
       {!props.isPreviewMode && 

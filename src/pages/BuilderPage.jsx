@@ -6,6 +6,7 @@ export default function BuilderPage() {
   const [fields, setFields] = useState(()=>JSON.parse(localStorage.getItem('fields')) || []);
   const [selectedFieldType, setSelectedFieldType] = useState("text")
   const [isPreviewMode, setIsPreviewMode] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
   
   useEffect(()=>{
     /*storing and converting to json*/
@@ -237,6 +238,21 @@ export default function BuilderPage() {
   }
 
 
+  function handleSubmit(e){
+    e.preventDefault()
+    setIsSubmitted(true)
+
+  }
+
+
+  function clearForm(){
+    const confirmClear = window.confirm("clear the form")
+    if(confirmClear){
+    setFields([])
+    setIsSubmitted(false)
+    setIsPreviewMode(false)
+    }
+  }
 
 
 
@@ -270,7 +286,8 @@ export default function BuilderPage() {
       </select>
       
       {fields.length > 0 && <button className="export-btn" onClick={handleExport}>Export JSON</button>}
-      {fields.length >0 && <button className="import-btn" onClick={handleImport}>Import JSON</button>}
+      <button className="import-btn" onClick={handleImport}>Import JSON</button>
+      <button onClick={clearForm}>Clear Form</button>
       </div>
       </div>
       )
@@ -284,6 +301,8 @@ export default function BuilderPage() {
           <span>Click "Add Field" to start building your form.</span> 
         </p>
         </div> :
+        <form onSubmit={handleSubmit}>
+          {
         fields.map((field=>(
           /* settings section*/
           <FieldCard 
@@ -307,18 +326,21 @@ export default function BuilderPage() {
         )))
       }
       {isPreviewMode && 
+      <div>
       <button
-        type="button"
+        type="submit"
         className="submit-btn" 
-        onClick={(e) => {
-          e.preventDefault(); // Prevents the page from reloading
-          alert("Form submitted successfully");
-        }}
       >
         Submit
       </button>
-        }
 
+      {isSubmitted && <p className="submit-success">✅ Form submitted successfully</p>}
+        </div>
+      }
+      
+      
+      </form> 
+      }
 
    </div>
   )

@@ -1,5 +1,6 @@
 *{
    box-sizing:border-box;
+  
 }
 
 .builder-container{
@@ -17,14 +18,14 @@
 .msg-container{
   background-color: #ded8d8; 
   border: 2px dashed #444;    
-  border-radius: 14px;       
-  padding: 30px 40px;            
+  border-radius: 14px;              
   display: flex;
   justify-content: center;   
   align-items: center;       
   text-align: center;        
   min-height: 150px;         
-  margin: 30px 0;
+  margin: auto;
+  padding: 40px;
 
 }
 
@@ -125,13 +126,9 @@ button.submit-btn{
   background-color: #2453ec;
   color: rgb(233, 229, 229);
   font-size: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: block;
 
   white-space: nowrap;
-  display: inline-block;
   min-width: fit-content;
   width: 180px;
 
@@ -152,6 +149,14 @@ button.submit-btn:hover{
 button:hover{
   background-color: #e2e2e2; /* Slightly darker than the default light grey */
   border-color: #adadad;
+}
+
+.submit-success{
+  display: block;
+  text-align: center;
+  margin-top: 16px;
+  font-size: 17px;
+  font-weight: 300;
 }
 
 .controls select{
