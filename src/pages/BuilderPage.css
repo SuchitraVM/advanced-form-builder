@@ -4,7 +4,86 @@
    box-sizing:border-box;
 }
 
+body{
+  overflow-x: hidden;
+}
 
+
+@media screen and (max-width: 768px){
+
+  .header{
+    flex-direction: column;
+    align-items: center;
+
+    height: auto;
+
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .header-actions{
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    width: 100%;
+  }
+
+  .controls{
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    padding: 0 12px;
+  }
+
+  .previewMode-btn,
+  .submit-btn{
+    width: 90%;
+    max-width: 320px;
+  }
+
+  h2{
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+}
+
+@media screen and (max-width: 480px){
+
+  .header{
+    padding: 12px 8px;
+  }
+
+  .header-actions{
+    width: 100%;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 8px;
+  }
+
+  .header-actions button{
+    margin-left: 0;
+  }
+
+  h2{
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+}
 
 .builder-container{
   display: flex;
@@ -18,7 +97,8 @@
   display:flex;
   justify-content:space-between;
   align-items:center;
-  height: 95px;
+  flex-wrap: wrap;
+  height: auto;
 
   border: 1px solid #949191;
   background-color: #970747;
@@ -27,6 +107,8 @@
   margin-bottom: 20px;
   padding-left: 12px;
   padding-right: 12px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .header-actions{
@@ -241,6 +323,7 @@ button.submit-btn:hover{
 }
 
 .controls select{
+  max-width: 100%;
   padding: 8px 12px;
   border-radius: 6px;
   font-size: 14px;
