@@ -52,7 +52,7 @@ export default function FieldCard(props) {
 
           <input
             type={props.type}
-            placeholder="user input here"
+            placeholder={props.type === "text" ? "user input here" : "Enter email here"}
             required={props.required}
           />
         </div>

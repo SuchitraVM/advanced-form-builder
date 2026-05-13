@@ -277,6 +277,7 @@ export default function BuilderPage() {
     </header>
 
     <div className="builder-container">
+      {!isPreviewMode && 
       <div className="controls">
         <button onClick={addFields} className="addFields-btn">Add Field</button>
         <select value={selectedFieldType} onChange={(e)=>setSelectedFieldType(e.target.value)}>
@@ -295,6 +296,7 @@ export default function BuilderPage() {
           <option value="feedback">Feedback Form</option>
         </select>
       </div>  
+      }
       
     {fields.length !== 0 && <button className="previewMode-btn" onClick={()=>setIsPreviewMode(!isPreviewMode)}>{(isPreviewMode) ?"Back to Builder " : "Preview Form"}</button>}
     <main className="main">
@@ -333,7 +335,7 @@ export default function BuilderPage() {
           }
           {
           isPreviewMode && 
-            <div>
+            <div className="submit-section">
               <button
                 type="submit"
                 className="submit-btn" 
