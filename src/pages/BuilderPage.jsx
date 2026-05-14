@@ -277,7 +277,7 @@ export default function BuilderPage() {
     <div className="builder-container">
       {!isPreviewMode && 
       <div className="controls">
-        <button onClick={addFields} className="addFields-btn">Add Field</button>
+        <button onClick={addField} className="addFields-btn">Add Field</button>
         <select value={selectedFieldType} onChange={(e)=>setSelectedFieldType(e.target.value)}>
           <option value="text">text</option>
           <option value="checkbox">checkbox</option>
