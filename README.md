@@ -1,18 +1,179 @@
-# React + Vite
+# Advanced Form Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A dynamic and responsive form builder application built with React. Users can create custom forms, preview them in real time, reorder fields, import/export form configurations as JSON, and use ready-made templates.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Live Demo
 
-## React Compiler
+Add your deployed link here.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+Example:
 
-Note: This will impact Vite dev & build performances.
+```bash
+https://your-project.vercel.app
+```
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+
+### Form Building
+- Add multiple field types dynamically
+- Edit field labels
+- Mark fields as required
+- Delete fields
+- Reorder fields using move up/down buttons
+
+### Supported Field Types
+- Text
+- Email
+- Password
+- Checkbox
+- Select Dropdown
+- Textarea
+- Number
+
+### Preview Mode
+- Real-time form preview
+- Form submission validation
+- Success message after submission
+
+### Password Validation
+- Confirm password support
+- Password match validation
+- Password length validation
+- Show/Hide password toggle
+
+### Templates
+Pre-built form templates included:
+- Contact Form
+- Signup Form
+- Feedback Form
+
+### JSON Features
+- Export form schema as JSON
+- Import forms using JSON
+- LocalStorage persistence
+
+### Responsive Design
+- Mobile responsive layout
+- Adaptive header and controls
+- Flexible card-based UI
+
+---
+
+## Tech Stack
+
+- React
+- JavaScript (ES6+)
+- CSS3
+- Vite
+- LocalStorage API
+
+---
+
+## Project Structure
+
+```bash
+src
+│
+├── components
+│   └── FieldCard
+│       ├── FieldCard.jsx
+│       └── FieldCard.css
+│
+├── pages
+│   └── BuilderPage
+│       ├── BuilderPage.jsx
+│       └── BuilderPage.css
+│
+├── data
+│   └── templates.js
+│
+├── utils
+│   └── localStorage.js
+│
+├── App.jsx
+└── main.jsx
+```
+
+---
+
+## Installation & Setup
+
+Clone the repository:
+
+```bash
+git clone <your-repository-link>
+```
+
+Navigate into the project:
+
+```bash
+cd advanced-form-builder
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start development server:
+
+```bash
+npm run dev
+```
+
+---
+
+## Screenshots
+
+Add screenshots here after deployment.
+
+Suggested screenshots:
+- Desktop View
+- Mobile Responsive View
+- Preview Mode
+- Templates
+- JSON Import/Export
+
+---
+
+## Future Improvements
+
+- Drag and drop field reordering
+- Dark mode
+- Form submission backend integration
+- Field validation rules
+- Multi-step forms
+- Authentication
+- Database storage
+
+---
+
+## What I Learned
+
+This project helped me improve my understanding of:
+
+- React state management
+- Component architecture
+- Conditional rendering
+- Responsive UI design
+- Form validation
+- LocalStorage persistence
+- Dynamic rendering
+- Reusable UI components
+- Flexbox and responsive layouts
+
+---
+
+## Author
+
+V M Suchitra
+
+GitHub: https://github.com/SuchitraVM
+
+LinkedIn: https://www.linkedin.com/in/v-m-suchitra/
+
