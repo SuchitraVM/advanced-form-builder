@@ -9,7 +9,6 @@
 
 
 
-
 .fieldCard-container{
   flex-wrap: wrap;
   border: 1px solid #ccc;
@@ -36,10 +35,13 @@
   flex-direction: column;
   flex-wrap: wrap;
   row-gap: 3px;
+
   margin-top: 15px;
+  margin-bottom: 8px;
+  
   font-size: 18px;
   font-weight: 200;
-  margin-bottom: 8px;
+  
 
 }
 
@@ -88,6 +90,8 @@
   cursor: pointer;
 
 }
+
+/*PREVIEW BUTTONS*/
 
 .preview-btns{
   display: flex;
@@ -284,6 +288,8 @@ button:hover{
   border-radius: 3px;
   cursor: pointer;
 }
+
+
 
 /*CHECKBOX PREVIEW*/
 .checkbox-preview{

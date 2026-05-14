@@ -14,7 +14,7 @@ export default function BuilderPage() {
 
   },[fields])
 
-  function addFields(){
+  function addField(){
     const newFields = {
       id : Date.now(),
       type : selectedFieldType,
@@ -116,8 +116,6 @@ export default function BuilderPage() {
       return
     }
   }
-  
- 
 
   function updateFieldLabel(id , newLabel){
     const updateFields = fields.map((field)=>(
@@ -266,13 +264,13 @@ export default function BuilderPage() {
     <header className="header">
       <h2>Form Builder</h2>
       {
-      !isPreviewMode && (
-      <div className="header-actions">
-      {fields.length > 0 && <button className="export-btn" onClick={handleExport}>Export JSON</button>}
-      <button className="import-btn" onClick={handleImport}>Import JSON</button>
-      <button className="clearForm"onClick={clearForm}>Clear Form</button>
-      </div>
-      )
+        !isPreviewMode && (
+        <div className="header-actions">
+          {fields.length > 0 && <button className="export-btn" onClick={handleExport}>Export JSON</button>}
+          <button className="import-btn" onClick={handleImport}>Import JSON</button>
+          <button className="clearForm"onClick={clearForm}>Clear Form</button>
+        </div>
+        )
       }
     </header>
 
@@ -339,8 +337,7 @@ export default function BuilderPage() {
               <button
                 type="submit"
                 className="submit-btn" 
-              >
-                Submit
+              >Submit
               </button>
 
               {isSubmitted && <p className="submit-success">✅ Form submitted successfully</p>}
